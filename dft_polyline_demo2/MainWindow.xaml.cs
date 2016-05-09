@@ -20,6 +20,11 @@ namespace dft_polyline_demo2
     /// </summary>
     public partial class MainWindow : Window
     {
+        void EnableDisableControls()
+        {
+            
+        }
+
         public MainWindow()
         {
             InitializeComponent();
