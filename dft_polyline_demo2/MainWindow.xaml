@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dft_polyline_demo2"
         mc:Ignorable="d"
-        Title="DFT and FT for polyline" Height="455.694" Width="525" ResizeMode="NoResize">
+        Title="DFT and FT for polyline" Height="455.694" Width="525" ResizeMode="NoResize" Activated="Window_Activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,15 +16,14 @@
         <Label x:Name="label" Content="Параметры ломаной" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="label1" Content="Количество узлов ломаной m =" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1_Copy" Content="Сетка" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="txt_m" HorizontalAlignment="Left" Height="23" Margin="200,49,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="84" SelectionOpacity="0"/>
-        <RadioButton x:Name="radPolyNodesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes" IsChecked="True"/>
-        <RadioButton x:Name="radPolyNodesFunction" Content="Формула" HorizontalAlignment="Left" Margin="252,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes"/>
+        <RadioButton x:Name="radPolyNodesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes" IsChecked="True" Click="radPolyNodesRandom_Click"/>
+        <RadioButton x:Name="radPolyNodesFunction" Content="Формула" HorizontalAlignment="Left" Margin="252,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes" Click="radPolyNodesFunction_Click"/>
         <TextBox x:Name="txtMaxDelta" HorizontalAlignment="Left" Height="23" Margin="72,112,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy1" Content="max h = " HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" ToolTip="Максимальное расстояние между соседними узлами (0 - не имеет значения)"/>
         <ComboBox x:Name="comboNodesFunction" HorizontalAlignment="Left" Margin="200,112,0,0" VerticalAlignment="Top" Width="253" IsEditable="True"/>
         <Label x:Name="label1_Copy2" Content="Значения ломаной" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <RadioButton x:Name="radPolyValuesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,146,0,0" VerticalAlignment="Top" GroupName="poly_values" IsChecked="True"/>
-        <RadioButton x:Name="radPolyValuesFunction" Content="Вписанная в функцию" HorizontalAlignment="Left" Margin="252,146,0,0" VerticalAlignment="Top" GroupName="poly_values"/>
+        <RadioButton x:Name="radPolyValuesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,146,0,0" VerticalAlignment="Top" GroupName="poly_values" IsChecked="True" Click="radPolyValuesRandom_Click"/>
+        <RadioButton x:Name="radPolyValuesFunction" Content="Вписанная в функцию" HorizontalAlignment="Left" Margin="252,146,0,0" VerticalAlignment="Top" GroupName="poly_values" Click="radPolyValuesFunction_Click"/>
         <Label x:Name="label1_Copy3" Content="f = " HorizontalAlignment="Left" Margin="167,108,0,0" VerticalAlignment="Top" ToolTip="Функция, задающая узлы" Width="28"/>
         <TextBox x:Name="txtPolyMinValue" HorizontalAlignment="Left" Height="23" Margin="72,170,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy4" Content="min y = " HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" ToolTip="Минимальное значение ломаной по Y"/>
@@ -49,5 +48,6 @@
         <Button x:Name="btnDiscreteFourierTransform" Content="ДПФ" HorizontalAlignment="Left" Margin="268,386,0,0" VerticalAlignment="Top" Width="185"/>
         <Button x:Name="btnNodesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="458,112,0,0" VerticalAlignment="Top" Width="51" Height="23"/>
         <Button x:Name="btnValuesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="458,170,0,0" VerticalAlignment="Top" Width="51" Height="23"/>
+        <TextBox x:Name="txt_m" HorizontalAlignment="Left" Height="23" Margin="200,49,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
     </Grid>
 </Window>
