@@ -5,49 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dft_polyline_demo2"
         mc:Ignorable="d"
-        Title="DFT and FT for polyline" Height="455.694" Width="525" ResizeMode="NoResize" Activated="Window_Activated">
+        Title="DFT and FT for polyline" Height="583.735" Width="525" ResizeMode="NoResize" Activated="Window_Activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="label" Content="Параметры ломаной" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="label1" Content="Количество узлов ломаной m =" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy" Content="Сетка" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <RadioButton x:Name="radPolyNodesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes" IsChecked="True" Click="radPolyNodesRandom_Click"/>
-        <RadioButton x:Name="radPolyNodesFunction" Content="Формула" HorizontalAlignment="Left" Margin="252,84,0,0" VerticalAlignment="Top" GroupName="poly_nodes" Click="radPolyNodesFunction_Click"/>
-        <TextBox x:Name="txtMaxDelta" HorizontalAlignment="Left" Height="23" Margin="72,112,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="label1" Content="Количество звеньев ломаной m =" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="Сетка" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton x:Name="radPolyNodesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,46,0,0" VerticalAlignment="Top" GroupName="poly_nodes" IsChecked="True" Click="radPolyNodesRandom_Click"/>
+        <RadioButton x:Name="radPolyNodesFunction" Content="Формула" HorizontalAlignment="Left" Margin="252,46,0,0" VerticalAlignment="Top" GroupName="poly_nodes" Click="radPolyNodesFunction_Click"/>
+        <TextBox x:Name="txtMaxDelta" HorizontalAlignment="Left" Height="23" Margin="72,112,0,0" TextWrapping="Wrap" Text="0,5" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy1" Content="max h = " HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" ToolTip="Максимальное расстояние между соседними узлами (0 - не имеет значения)"/>
-        <ComboBox x:Name="comboNodesFunction" HorizontalAlignment="Left" Margin="200,112,0,0" VerticalAlignment="Top" Width="253" IsEditable="True"/>
+        <ComboBox x:Name="comboNodesFunction" HorizontalAlignment="Left" Margin="200,112,0,0" VerticalAlignment="Top" Width="253" IsEditable="True" Grid.ColumnSpan="2" SelectedIndex="0">
+            <ComboBoxItem Content="2*[PI]*[j]/[m] //Равномерная сетка"/>
+        </ComboBox>
         <Label x:Name="label1_Copy2" Content="Значения ломаной" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <RadioButton x:Name="radPolyValuesRandom" Content="Случайная" HorizontalAlignment="Left" Margin="152,146,0,0" VerticalAlignment="Top" GroupName="poly_values" IsChecked="True" Click="radPolyValuesRandom_Click"/>
-        <RadioButton x:Name="radPolyValuesFunction" Content="Вписанная в функцию" HorizontalAlignment="Left" Margin="252,146,0,0" VerticalAlignment="Top" GroupName="poly_values" Click="radPolyValuesFunction_Click"/>
+        <RadioButton x:Name="radPolyValuesFunction" Content="Вписанная в функцию" HorizontalAlignment="Left" Margin="252,146,0,0" VerticalAlignment="Top" GroupName="poly_values" Click="radPolyValuesFunction_Click" Grid.ColumnSpan="2"/>
         <Label x:Name="label1_Copy3" Content="f = " HorizontalAlignment="Left" Margin="167,108,0,0" VerticalAlignment="Top" ToolTip="Функция, задающая узлы" Width="28"/>
         <TextBox x:Name="txtPolyMinValue" HorizontalAlignment="Left" Height="23" Margin="72,170,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy4" Content="min y = " HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" ToolTip="Минимальное значение ломаной по Y"/>
-        <ComboBox x:Name="comboValuesFunction" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="253" IsEditable="True"/>
+        <ComboBox x:Name="comboValuesFunction" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="253" IsEditable="True" Grid.ColumnSpan="2" SelectedIndex="0">
+            <ComboBoxItem Content="Sin(x)"/>
+        </ComboBox>
         <Label x:Name="label1_Copy5" Content="f = " HorizontalAlignment="Left" Margin="167,166,0,0" VerticalAlignment="Top" ToolTip="Функция для вписывания в нее ломаной" Width="28"/>
         <TextBox x:Name="txtPolyMaxValue" HorizontalAlignment="Left" Height="23" Margin="72,201,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy6" Content="max y = " HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" ToolTip="Максимальное значение ломаной по Y"/>
-        <Button x:Name="btnGeneratePolyline" Content="Сгенерировать ломаную" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="185"/>
+        <Button x:Name="btnGenerateGrid" Content="Сгенерировать сетку" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="185" Click="btnGenerateGrid_Click"/>
         <Label x:Name="label1_Copy7" Content="ПФ" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="label1_Copy8" Content="ДПФ" HorizontalAlignment="Left" Margin="268,255,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="txtFt_N" HorizontalAlignment="Left" Height="23" Margin="73,286,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtFt_N" HorizontalAlignment="Left" Height="23" Margin="73,286,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy9" Content="n = " HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" ToolTip="Степерь частичной суммы ряда Фурье" Cursor=""/>
         <TextBox x:Name="txtFt_n" HorizontalAlignment="Left" Height="23" Margin="73,317,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="label1_Copy10" Content="N = " HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" ToolTip="Густота сетки, на которой будет вычисляться ПФ" RenderTransformOrigin="1.26,-0.008"/>
-        <TextBox x:Name="txtDft_N" HorizontalAlignment="Left" Height="23" Margin="330,287,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtDft_N" HorizontalAlignment="Left" Height="23" Margin="330,287,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
         <Label x:Name="label1_Copy11" Content="n = " HorizontalAlignment="Left" Margin="268,318,0,0" VerticalAlignment="Top" ToolTip="Порядок частичной суммы дискретного ряда Фурье" RenderTransformOrigin="0.484,0.504"/>
-        <TextBox x:Name="txtDft_n" HorizontalAlignment="Left" Height="23" Margin="330,318,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtDft_n" HorizontalAlignment="Left" Height="23" Margin="330,318,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
         <Label x:Name="label1_Copy12" Content="N = " HorizontalAlignment="Left" Margin="268,287,0,0" VerticalAlignment="Top" ToolTip="Густота сетки, на которой будет вычисляться ДПФ"/>
-        <TextBox x:Name="txtDft_N1" HorizontalAlignment="Left" Height="23" Margin="330,349,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtDft_N1" HorizontalAlignment="Left" Height="23" Margin="330,349,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
         <Label x:Name="label1_Copy13" Content="N1 = " HorizontalAlignment="Left" Margin="268,345,0,0" VerticalAlignment="Top" ToolTip="Густота сетки, на которой будет рисоваться ДПФ"/>
-        <Button x:Name="btnFouriesTransform" Content="ПФ" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="btnDiscreteFourierTransform" Content="ДПФ" HorizontalAlignment="Left" Margin="268,386,0,0" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="btnNodesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="458,112,0,0" VerticalAlignment="Top" Width="51" Height="23"/>
-        <Button x:Name="btnValuesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="458,170,0,0" VerticalAlignment="Top" Width="51" Height="23"/>
-        <TextBox x:Name="txt_m" HorizontalAlignment="Left" Height="23" Margin="200,49,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btnFouriesTransform" Content="ПФ" HorizontalAlignment="Left" Margin="10,475,0,0" VerticalAlignment="Top" Width="185" Click="btnFouriesTransform_Click"/>
+        <Button x:Name="btnDiscreteFourierTransform" Content="ДПФ" HorizontalAlignment="Left" Margin="268,475,0,0" VerticalAlignment="Top" Width="185" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnNodesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="81.676,112,0,0" VerticalAlignment="Top" Width="51" Height="23" Grid.Column="1"/>
+        <Button x:Name="btnValuesFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="81.676,170,0,0" VerticalAlignment="Top" Width="51" Height="23" Grid.Column="1"/>
+        <TextBox x:Name="txt_m" HorizontalAlignment="Left" Height="23" Margin="212,79,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btnGeneratePolyline_Copy" Content="Сгенерировать ломаную" HorizontalAlignment="Left" Margin="200,229,0,0" VerticalAlignment="Top" Width="185" Grid.ColumnSpan="2" Click="btnGeneratePolyline_Copy_Click"/>
+        <RadioButton x:Name="radPolyNodesRandomMaxH" Content="По max h" HorizontalAlignment="Left" Margin="330,46,0,0" VerticalAlignment="Top" GroupName="poly_nodes" Click="radPolyNodesRandom_Click" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="comboEstFunction" HorizontalAlignment="Left" Margin="107,428,0,0" VerticalAlignment="Top" Width="213" IsEditable="True" SelectedIndex="0">
+            <ComboBoxItem Content="1/(n_f^1)"/>
+        </ComboBox>
+        <Button x:Name="btnEstFunctionSave" Content="Сохр." HorizontalAlignment="Left" Margin="325,427,0,0" VerticalAlignment="Top" Width="51" Height="23"/>
+        <CheckBox x:Name="cbDrawEstimate" Content="Рисовать функцию оценки" HorizontalAlignment="Left" Margin="107,408,0,0" VerticalAlignment="Top" Click="checkBox_Click"/>
     </Grid>
 </Window>
